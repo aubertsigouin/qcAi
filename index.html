@@ -64,7 +64,6 @@
 
 		.circle-overlay {
 			font-size: 11px;
-			border-radius: 50%;
 			position: absolute;
 
 		}
@@ -1107,7 +1106,7 @@ let data = [{
 		let infoBox = node.append('foreignObject')
 			.classed('circle-overlay hidden', true)
 			.attr('x', -350 * 0.5 * 0.8)
-			.attr('y', -180)
+			.attr('y', -350 * 0.5 * 0.8)
 			.attr('height', 350 * 0.8)
 			.attr('width', 350 * 0.8)
 				.append('xhtml:div')
