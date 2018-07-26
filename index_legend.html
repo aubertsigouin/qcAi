@@ -105,13 +105,31 @@
 </head>
 
 
-<body>
 
+      <div class="region region-content">
+    
+
+
+  </div>
+<body>
+<div class="row header-row">
+  <header class="main main-header">
+    <div class="col un">
+      <h1>
+        <a href="/" rel="home" id="logo">
+          <!-- <img src="http://www.technocompetences.qc.ca/sites/all/themes/technoc/logo.png" alt="TECHNOCompétences" -->
+          <span class="big-logo-wrapper">
+            <img data-fallback="img/logo-big.png" class="logo-big svg" src="http://www.technocompetences.qc.ca/sites/default/files/uploads/immigration/Logo_TC_couleur_sanssignature_transparent.gif" alt="TECHNOCompétences" />
+          </span>
+          <img data-fallback="img/logo-small.png" class="logo-small svg" src="http://www.technocompetences.qc.ca/sites/default/files/uploads/immigration/Logo_TC_couleur_sanssignature_transparent.gif" alt="TECHNOCompétences" />
+        </a>
+      </h1>
+    </div>
+</div>
 
 
 
 	<svg width="100%" height="700" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
-	<h5><a href="mailto:aslebel@technocompetences.qc.ca?">Commentaires ou modifications ?</a></h5>
 	<script src="js/d3.min.js"></script>
 	<script src="js/d3-legend.min.js"></script>
 	<script>
@@ -1043,8 +1061,7 @@ let data = [{
 
 		node.append('title')
 			.text(d => (d.cat + '::' + d.name + '\n' + format(d.value)));
-	
-		svg.selectAll('g.node').remove();
+
 
 		let legendOrdinal = d3.legendColor()
 			.scale(scaleColor)
@@ -1054,7 +1071,7 @@ let data = [{
 		svg.append('g')
 			.classed('legend-color', true)
 			.attr('text-anchor', 'start')
-			.attr('transform', 'translate(20,30)')
+			.attr('transform', position)
 			.style('font-size', '11px')
 			.style('fill', 'rgb(0,0,0)')
 			.call(legendOrdinal);
@@ -1068,8 +1085,17 @@ let data = [{
 			.shape('circle')
 			.shapePadding(10)
 			.labelAlign('end');
-
-		
+			
+		function position(d,i) {
+		  var c = 2;   // number of columns
+		  var h = 20;  // legend entry height
+		  var w = 150; // legend entry width (so we can position the next column) 
+		  var tx = 10; // tx/ty are essentially margin values
+		  var ty = 10;
+		  var x = i % c * w + tx;
+		  var y = Math.floor(i / c) * h + ty;
+		  return "translate(" + x + "," + y + ")";
+}
 // legend 2
 //svg.append('g')
 //	.classed('legend-size', true)
