@@ -1214,7 +1214,7 @@ let data = [{
 
 
 		node.on("mouseover", (currentNode) => {
-			
+			d3.selectAll('.node-icon').classed('hidden', false);
 			d3.event.stopPropagation();
 			console.log('currentNode', currentNode);
 			let currentTarget = d3.event.currentTarget; // the <g> el
@@ -1288,6 +1288,7 @@ let data = [{
 		// blur
 		d3.select(document).on('click', () => {
 			let target = d3.event.target;
+			
 			// check if click on document but not on the circle overlay
 			if (!target.closest('#circle-overlay') && focusedNode) {
 				focusedNode.fx = null;
